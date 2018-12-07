@@ -34,6 +34,12 @@
 
         <button id="btn_remove" class="btn btn-danger">Remover</button>
     </form>
+
+    <form action="{% url 'appsite:edita' %}" method="POST" id="edita_projeto" novalidate>
+        {% csrf_token %}
+
+        <button id="btn-edita" class="btn btn-dark">Edita</button>
+    </form>
             
     </div>
     {% endif %}
@@ -44,4 +50,10 @@
         $("#remove_projeto").append('{{ remove_projeto_form.projeto_id }}')
         $("#remove_projeto").submit()
     })
+
+    $('#btn-edita').click(function () {
+        $('#edita_projeto').append('{{ remove_projeto_form.projeto_id }}')
+        $('#edita_projeto').submit()
+    })
+    
 {% endblock %}
