@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .forms import Login
 from django.contrib.auth import authenticate, login
 
@@ -13,12 +13,11 @@ def signin(request):
             user = authenticate(username=usernm, password=psswrd)
 
             if user is not None:
-                saida = True
-                return redirect('appsite:busca')
+                login(request, user)                
+                return redirect('appsite:index')
             
             else:
-                saida = False
-                return redirect('appsite:cadastro')
+                return HttpResponse('usuario nao existe')
             
             #return redirect('autenticacao:autenticado', val=saida)
             #return autenticado(request, saida)
