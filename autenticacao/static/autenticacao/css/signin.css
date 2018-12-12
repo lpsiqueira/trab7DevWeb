@@ -1,0 +1,32 @@
+.sign-in {    
+    padding: 20px;    
+    font-size: 13px;
+}
+
+.page-sign-in {
+    margin: 10px;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+}
+
+.abc {
+    font-size: 14px;
+    margin-top: 16px;
+}
+
+.container-sign-in {
+    width: 320px;    
+}
+
+.footer {
+    font-size: 12px;
+    margin: auto 5px;
+}
+
+.f-margin {
+    margin-top: 90px;
+}
+
+.logo {
+    margin: 25px auto;
+}
