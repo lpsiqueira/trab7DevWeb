@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from .forms import Login
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 def signin(request):
@@ -25,3 +25,7 @@ def signin(request):
         form = Login()
 
     return render(request, 'autenticacao/signin.html', {'form': form})
+
+def signout(request):
+    logout(request)
+    return redirect('/')
