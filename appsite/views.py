@@ -3,6 +3,8 @@ from django.contrib import messages
 from django.http import HttpResponse
 from .forms import ProjetoForm, RemoveProdutoForm
 from .models import Projeto, Language
+from carrinho.forms import AdicionaItem
+from carrinho.views import adiciona
 #from appsite.models import Image
 
 def teste(request):
@@ -20,7 +22,13 @@ def signUp(request):
 
 def busca(request):
     projetos = Projeto.objects.all()
-    return render(request, 'appsite/busca.html', {'projetos': projetos, })
+    if request.method == 'POST':
+        form = AdicionaItem(request.POST)
+        if form.is_valid():
+            return adiciona(form.cleaned_data['projeto_id'], request.user)
+    else:
+        form = AdicionaItem(auto_id=False)
+    return render(request, 'appsite/busca.html', {'projetos': projetos, 'form': form})
 
 def cadastro(request):
     
