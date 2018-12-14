@@ -5,3 +5,12 @@ class AdicionaItem(forms.Form):
         widget=forms.HiddenInput(),
         required=True
     )
+
+class RemoveItem(forms.Form):
+    item_id = forms.CharField(
+        widget=forms.HiddenInput(),
+        required=True
+    )
+
+class MudaQuantidade(forms.Form):
+    quantidade = forms.IntegerField()
