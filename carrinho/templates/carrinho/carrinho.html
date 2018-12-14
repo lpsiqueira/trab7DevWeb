@@ -57,7 +57,8 @@
 
         $(this).find('td:last-child>form>input:nth-child(4)').on('change textInput input', function(e) {
             console.log($(this).val())
-            var qtdRetorno =  $(this).val()
+            let abc = $(this).val()
+            var qtdRetorno =  abc
             
             function retornoF (retorno) {
                 console.log('quantidade retornada: ' + retorno.quantidade)
