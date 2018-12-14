@@ -28,7 +28,9 @@
                         <form action="" method="POST" novalidate>
                             {% csrf_token %}
                             {{ form.item_id }}
-                            <button type="submit" class="btn btn-sm btn-danger">Remover</button>
+                            {{ form.remover }}
+                            {{ form.quantidade }}
+                            <button type="" class="btn btn-sm btn-danger">Remover</button>
                         </form>
                     </td>
                 </tr>
@@ -44,7 +46,14 @@
         let valor = $(this).find('td:first-child').text()
         $(this).find('td:last-child>form>input:nth-child(2)').val(valor)
         let valor2 = $(this).find('td:last-child>form>input:nth-child(2)').val()
+        $(this).find('td:last-child>form>button:last-child').on('click', function(e) {
+            $(this).parent().find('input:nth-child(3)').val('true')
+        })
+        $(this).find('td:last-child>form>button:last-child').submit()
         console.log(valor)
         console.log(valor2)
     })
+{% endblock %}
+
+{% block scripts %}
 {% endblock %}

@@ -12,5 +12,11 @@ class RemoveItem(forms.Form):
         required=True
     )
 
-class MudaQuantidade(forms.Form):
-    quantidade = forms.IntegerField()
+    remover = forms.BooleanField(
+        initial='false',
+        widget=forms.HiddenInput()
+    )
+
+    quantidade = forms.IntegerField(
+        required=False
+    )    

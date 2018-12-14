@@ -6,12 +6,18 @@ from .forms import RemoveItem
 # Create your views here.
 def carrinho(request):
     if request.method == 'POST':
-        form = RemoveItem(request.POST)
+        form = RemoveItem(request.POST, auto_id=False)
         if form.is_valid():
-            i = Carrinho.objects.get(pk=form.cleaned_data['item_id'])
-            i.delete()
+            if form.cleaned_data['remover']:
+                i = Carrinho.objects.get(pk=form.cleaned_data['item_id'])
+                i.delete()
+                print(form.cleaned_data['remover'])
+            """ else:
+                itemQtd = Carrinho.objects.get(pk=form.cleaned_data['item_id'])
+                itemQtd.quantidade = form.cleaned_data['quantidade']
+                itemQtd.save() """
     else:
-        form = RemoveItem()
+        form = RemoveItem(auto_id=False)
 
     itens = []
     context = {'form': form}
