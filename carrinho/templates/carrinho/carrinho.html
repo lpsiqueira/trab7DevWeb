@@ -30,7 +30,7 @@
                             {{ form.item_id }}
                             {{ form.remover }}
                             {{ form.quantidade }}
-                            <button type="" class="btn btn-sm btn-danger">Remover</button>
+                            <button type="submit" class="btn btn-sm btn-danger">Remover</button>
                         </form>
                     </td>
                 </tr>
@@ -77,8 +77,6 @@
             $(this).parent().parent().parent().find('td:nth-child(3)').text(qtdRetorno)
         })
 
-        $(this).find('td:last-child>form>button:last-child').submit()
-        console.log(valor)
     })
 {% endblock %}
 

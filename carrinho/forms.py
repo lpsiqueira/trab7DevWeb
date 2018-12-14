@@ -13,10 +13,10 @@ class RemoveItem(forms.Form):
     )
 
     remover = forms.BooleanField(
-        initial='false',
+        initial=False,
         widget=forms.HiddenInput()
     )
 
     quantidade = forms.IntegerField(
-        required=True,
+        required=False,
     )    
