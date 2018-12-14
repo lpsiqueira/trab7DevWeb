@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
+from django.http import JsonResponse
 from .models import Carrinho
 from appsite.models import Projeto
 from .forms import RemoveItem
@@ -12,10 +13,17 @@ def carrinho(request):
                 i = Carrinho.objects.get(pk=form.cleaned_data['item_id'])
                 i.delete()
                 print(form.cleaned_data['remover'])
-            """ else:
-                itemQtd = Carrinho.objects.get(pk=form.cleaned_data['item_id'])
-                itemQtd.quantidade = form.cleaned_data['quantidade']
-                itemQtd.save() """
+        else:
+            quantidade = request.POST.get('quantidade')
+            idQuantidade = request.POST.get('id')
+            itemQtd = Carrinho.objects.get(pk=idQuantidade)
+            itemQtd.quantidade = quantidade
+            itemQtd.save()
+            itemQtd = Carrinho.objects.get(pk=idQuantidade)
+            quantidade = itemQtd.quantidade
+            saida = {'quantidade': quantidade}
+            return JsonResponse(saida)
+
     else:
         form = RemoveItem(auto_id=False)
 

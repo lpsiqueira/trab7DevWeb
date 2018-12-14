@@ -18,5 +18,5 @@ class RemoveItem(forms.Form):
     )
 
     quantidade = forms.IntegerField(
-        required=False
+        required=False,
     )    
