@@ -57,11 +57,12 @@
 
         $(this).find('td:last-child>form>input:nth-child(4)').on('change textInput input', function(e) {
             console.log($(this).val())
-            let valor = $(this).val()
+            var qtdRetorno =  $(this).val()
             
             function retornoF (retorno) {
                 console.log('quantidade retornada: ' + retorno.quantidade)
-                $(this).find('td:nth-child(3)').text(retorno.quantidade)
+                qtdRetorno = retorno.quantidade
+                //$(this).find('td:nth-child(3)').text(retorno.quantidade)
             }
 
             $.ajax({
@@ -72,7 +73,7 @@
                 success: retornoF
             })
 
-            $(this).parent().parent().parent().find('td:nth-child(3)').text(valor)
+            $(this).parent().parent().parent().find('td:nth-child(3)').text(qtdRetorno)
         })
 
         $(this).find('td:last-child>form>button:last-child').submit()
