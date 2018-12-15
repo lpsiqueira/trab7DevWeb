@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include, url
+from appsite.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('appsite/', include('appsite.urls')),
     path('auth/', include('autenticacao.urls')),
-    path('carrinho/', include('carrinho.urls'))
+    path('carrinho/', include('carrinho.urls')),
+    path('', index)
 ]

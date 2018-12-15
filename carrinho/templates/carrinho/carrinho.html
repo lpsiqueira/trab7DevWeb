@@ -24,7 +24,7 @@
                     <td scope="row" width="0%">{{ item.id }}</td>
                     <td class="text-center" scope="row" width="40%">{{ item.nome }}</td>
                     <td class="text-center" scope="row" width="40%">{{ item.qtd }}</td>
-                    <td scope="row" width="20%">
+                    <td class="text-center" scope="row" width="20%">
                         <form action="" method="POST" novalidate>
                             {% csrf_token %}
                             {{ form.item_id }}
