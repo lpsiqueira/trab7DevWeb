@@ -8,11 +8,13 @@ from .forms import RemoveItem
 def carrinho(request):
     if request.method == 'POST':
         form = RemoveItem(request.POST, auto_id=False)
-        if form.is_valid():
-            if form.cleaned_data['remover']:
-                i = Carrinho.objects.get(pk=form.cleaned_data['item_id'])
-                i.delete()
-                print(form.cleaned_data['remover'])
+        form.is_valid()
+
+        if request.POST.get('remover') == 'true':
+            i = Carrinho.objects.get(pk=int(request.POST.get('id')))
+            i.delete()
+            return HttpResponse()
+
         else:
             quantidade = request.POST.get('quantidade')
             if quantidade != '':
