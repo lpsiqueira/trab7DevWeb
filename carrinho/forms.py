@@ -19,5 +19,6 @@ class RemoveItem(forms.Form):
 
     quantidade = forms.IntegerField(
         required=False,
-        widget=forms.NumberInput(attrs={'class': 'w-25'})
+        widget=forms.NumberInput(attrs={'class': 'w-25'}),
+        min_value=0
     )    
