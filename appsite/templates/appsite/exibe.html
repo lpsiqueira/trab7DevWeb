@@ -16,31 +16,41 @@
         {% endif %}
 
         <div style="margin: 30pt 0">
-            <p class="h3">Projeto</p>
+            <p class="h3 p-2">Projeto</p>
 
-            <p class="h5">Autor: </p>
-            {{ projeto.autor }}
-            <p class="h5">Nome do Projeto:</p>
-            {{ projeto.nomeProjeto }}
-            <p class="h5">Linguagens:</p>
-            {% for x in linguagem %}
-                {{ x.nome }}
-            {% endfor %}            
+            <div class="p-2">
+                <p class="d-inline h5">Autor: </p>
+                <div class="d-inline">{{ projeto.autor }}</div>
+            </div>
+            
+            <div class="p-2">
+                <p class="d-inline h5">Nome do Projeto:</p>
+                <div class="d-inline">{{ projeto.nomeProjeto }}</div>
+            </div>
+            
+            <div class="p-2">
+                <p class="d-inline h5">Linguagens:</p>
+                {% for x in linguagem %}
+                    {{ x.nome }}
+                {% endfor %}
+            </div>
+                        
         </div>
     
     {% if remove_projeto_form %}
-    <form action="{% url 'appsite:remove' %}" method="POST" id="remove_projeto" novalidate>
-        {% csrf_token %}
+        <div class="">
+            <form action="{% url 'appsite:remove' %}" method="POST" class="d-inline p-2" id="remove_projeto" novalidate>
+                {% csrf_token %}
 
-        <button id="btn_remove" class="btn btn-danger">Remover</button>
-    </form>
+                <button id="btn_remove" class="btn btn-danger">Remover</button>
+            </form>
 
-    <form action="{% url 'appsite:edita' %}" method="POST" id="edita_projeto" novalidate>
-        {% csrf_token %}
+            <form action="{% url 'appsite:edita' projeto.id %}" class="d-inline p-2" method="POST" id="edita_projeto" novalidate>
+                {% csrf_token %}
 
-        <button id="btn-edita" class="btn btn-dark">Edita</button>
-    </form>
-            
+                <button id="btn-edita" class="btn btn-dark">Alterar</button>
+            </form>
+        </div>
     </div>
     {% endif %}
 {% endblock %}

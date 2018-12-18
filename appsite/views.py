@@ -70,7 +70,7 @@ def cadastro(request):
         form_projeto = ProjetoForm()
 
     #form_projeto = ProjetoForm()
-    context = {'form': form_projeto, }
+    context = {'form': form_projeto, 'titulo': 'Cadastro'}
     return render(request, 'appsite/cadastro.html', context)
 
 def exibe(request, id):
@@ -79,11 +79,11 @@ def exibe(request, id):
     projeto = {'projeto': obj, 'linguagem': obj.linguagem.all(), 'remove_projeto_form': remove_projeto_form,}
     return render(request, 'appsite/exibe.html', projeto)
 
-def edita(request):
+def edita(request, id):
     projeto = get_object_or_404(Projeto, pk=id)
     formProjeto = ProjetoForm(instance=projeto)
     formProjeto.fields['projeto_id'].initial = projeto.id
-    return render(request, 'produto/cadastra_produto.html', {'form': formProjeto, 'acao': 'alteracao'})
+    return render(request, 'appsite/cadastro.html', {'form': formProjeto, 'acao': 'alteracao', 'titulo': 'Alteração'})
 
 def remove(request):
     remove_projeto_form = RemoveProdutoForm(request.POST)

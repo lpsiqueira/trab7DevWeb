@@ -2,91 +2,31 @@
 
 {% load static %}
 
-{% block title %}<title>Cadastro</title>{% endblock %}
+{% block title %}<title>{{ titulo }}</title>{% endblock %}
 {% block includes %}<link href="{% static 'appsite/css/estilos.css'%}" rel="stylesheet">{% endblock %}
 
 {% block corpo %}
         
     <div class="container">
-        <p class="h3" style="margin: 20pt 10pt">Cadastro</p>
-
-        <form action="" class="" method="POST">
-            {% csrf_token %}
-            <div class="form-group col-4">
-                <label for="">Autor</label>
-                {# <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId"> #}
-                {{ form.autor }}
-                <small id="helpId" class="text-muted">Help text</small>
-            </div>
-
-            <div class="container form-group">
-                <label for="">Linguagem</label>
-                <div>
-                    {{ form.linguagem }}
+        <p class="h3" style="margin: 20pt 10pt">{{ titulo }}</p>
+        
+        {% if acao == 'alteracao' %}
+            <form action="{% url 'appsite:cadastro' %}" class="" method="POST">
+                {% csrf_token %}
                 
-                    <!-- <div class="form-check form-check-inline">                        
-                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
-                        {{ form.java }}
-                        <label class="form-check-label" for="">Java</label>
-                    </div>
-                    <div class="form-check form-check-inline">                        
-                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
-                        {{ form.c }}
-                        <label class="form-check-label" for="">C/C++</label>
-                    </div>
-                    <div class="form-check form-check-inline">                        
-                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
-                        {{ form.python }}
-                        <label class="form-check-label" for="">Python</label>
-                    </div>
-                    <div class="form-check form-check-inline">                        
-                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
-                        {{ form.javascript }}
-                        <label class="form-check-label" for="">Javascript</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
-                        {{ form.html }}
-                        <label class="form-check-label" for="">HTML</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
-                        {{ form.php }}
-                        <label class="form-check-label" for="">PHP</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
-                        {{ form.ruby }}
-                        <label class="form-check-label" for="">Ruby</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
-                        {{ form.vb }}
-                        <label class="form-check-label" for="">Visual Basic .NET</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
-                        {{ form.sql }}
-                        <label class="form-check-label" for="">PL/SQL</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        {# <input class="form-check-input" type="checkbox" value="" id=""> #}
-                        {{ form.swift }}
-                        <label class="form-check-label" for="">Swift</label>
-                    </div> -->
-                </div>
-            </div>
+                {% include 'appsite/form_projeto.html' %}
+                
+            </form>
             
-            <div class="form-group col-4">
-                <label for="">Nome do Projeto</label>
-                {# <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId"> #}
-                {{ form.nomeProjeto }}
-                <small id="helpId" class="text-muted">Help text</small>
-            </div>
-            {% csrf_token %}
-            <button type="submit" class="btn btn-dark" style="margin-left: 12pt">Cadastrar</button>
-            
-        </form>
+        {% else %}
+            <form action="" class="" method="POST">
+                {% csrf_token %}
+                
+                {% include 'appsite/form_projeto.html' %}
+
+                
+            </form>
+        {% endif %}
     </div>
 {% endblock %}     
     
